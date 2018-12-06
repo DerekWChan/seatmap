@@ -1,23 +1,28 @@
-'use strict';
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-class App extends React.Component {
+class App extends Component {
   render() {
     return (
-      <div class="container">
-          Welcome to Lola Seats!!
-          <span class="title">
-        </span>
-        <span class="instructions">
-          To get started, edit src/app.js to render your seat map component.
-          {"\n\n"}
-          Seat map data should be imported from data/seat.json.
-        </span>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
       </div>
     );
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+export default App;
