@@ -14,8 +14,15 @@ class Seat extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="seat">
+        {this.state.class}
+        {this.state.seat}
+        {this.state.row}
+        {this.state.occupied}
+        {this.state.premium}
+        {this.state.overWing}
       </div>
     );
   }

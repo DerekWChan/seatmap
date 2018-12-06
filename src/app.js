@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Data from './data/seats'
 import Seat from './Seat';
+import FirstClass from './FirstClass';
+import BusinessClass from './BusinessClass';
+import EconomyClass from './EconomyClass';
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +24,7 @@ class App extends Component {
 
   createSeatmap() {
     let seatmap = [];
-    this.state.data.slice(0,10).forEach(seat => {
+    this.state.data.forEach(seat => {
       seatmap.push(
         <Seat
           key={`${seat.row}${seat.seat}`}
