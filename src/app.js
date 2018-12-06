@@ -23,7 +23,7 @@ class App extends Component {
   // cabin class components as props
   initCabin(cabinClass) {
     // Store filtered seats (by cabin class) here
-    const seats = this.state.data.filter(seat => seat.class === 'First');
+    const seats = this.state.data.filter(seat => seat.class === cabinClass);
     // Store number of rows for this cabin; last row - first row + 1
     const firstRow = seats[0].row;
     const lastRow = seats[seats.length-1].row
@@ -46,9 +46,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <Cabin data={this.initCabin('First')}/>
-        <Cabin data={this.initCabin('Business')}/>
-        <Cabin data={this.initCabin('Economy')}/>
+        <Cabin className="first-class_cabin" data={this.initCabin('First')}/>
+        <Cabin className="business-class_cabin" data={this.initCabin('Business')}/>
+        <Cabin className="economy-class_cabin" data={this.initCabin('Economy')}/>
       </>
     );
   }

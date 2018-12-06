@@ -1,20 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300');
+
 .seat {
+  min-height: 100px;
+  margin: 1px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  border: none;
   background-color: white;
-  border: 1px solid black;
   text-align: center;
   font-size: 20px;
 }
 
-.seat:hover {
-  background-color: #aaffaa;
-}
-
-.seat:focus {
-  background-color: #aaffaa;
+.seat:hover, .seat:focus {
+  background-color: #00FF84;
 }
 
 .occupied {
-  filter: brightness(0.75)
+  background-color: #FFF1F1;
 }
 
 .premium {
