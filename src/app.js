@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Seats from './data/seats'
 import Seat from './Seat';
-import FirstClass from './FirstClass';
-import BusinessClass from './BusinessClass';
-import EconomyClass from './EconomyClass';
+import Cabin from './Cabin';
 
 class App extends Component {
   constructor(props) {
@@ -11,46 +9,33 @@ class App extends Component {
     this.state = {
       // Initialize JSON data sorted by row # then letter assignment
       data: Seats.sort((a, b) => {
-        if(a['row'] === b['row']) {
-          return a['seat'] === b['seat'] ? 0 : a['seat'] < b['seat'] ? -1 : 1;
+        if(a.row === b.row) {
+          return a.seat === b.seat ? 0 : a.seat < b.seat ? -1 : 1;
         } else {
-          return a['row'] < b['row'] ? -1 : 1;
+          return a.row < b.row ? -1 : 1;
         }
       })
     };
     this.createCabin = this.createCabin.bind(this);
   }
 
+  // Returns an object with seats, rows, and columns data to be passed onto
+  // cabin class components as props
   createCabin(cabinClass) {
-    let seats = [];
-    this.state.data.forEach(seat => {
-      if(seat.class === cabinClass) {
-        seats.push(
-          <Seat
-            key={`${seat.row}${seat.seat}`}
-            className={`${cabinClass.toLowerCase()}-class`}
-            id={`${seat.row}${seat.seat}`}
-            class={seat.class}
-            seat={seat.seat}
-            row={seat.row}
-            occupied={seat.occupied}
-            premium={seat.premium}
-            overWing={seat.overWing}
-          />
-        );
-      }
-    });
+    // Store filtered seats (by cabin class) here
+    const seats = this.state.data.filter(seat => seat.class === cabinClass);
     // Store number of rows for this cabin; last row - first row + 1
-    const firstRow = seats[0].props.row;
-    const lastRow = seats[seats.length-1].props.row
+    const firstRow = seats[0].row;
+    const lastRow = seats[seats.length-1].row
     const rowsNum = lastRow - firstRow + 1;
     // Store number of columns for this cabin;
     const letters = [];
     for(let seat of seats) {
-      if(seat.props.row === firstRow) {
-        letters.push(seat.props.seat);
+      if(seat.row === firstRow) {
+        letters.push(seat.seat);
       }
     }
+    // Bundle up cabin data to pass
     return {
       seats: seats,
       rows: rowsNum,
@@ -61,9 +46,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <FirstClass data={this.createCabin('First')}/>
-        <BusinessClass data={this.createCabin('Business')}/>
-        <EconomyClass data={this.createCabin('Economy')}/>
+        <Cabin data={this.createCabin('First')}/>
+        <Cabin data={this.createCabin('Business')}/>
+        <Cabin data={this.createCabin('Economy')}/>
       </>
     );
   }

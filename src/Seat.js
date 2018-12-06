@@ -5,7 +5,6 @@ class Seat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      className: this.props.className,
       id: this.props.id,
       class: this.props.class,
       seat: this.props.seat,
@@ -20,7 +19,7 @@ class Seat extends Component {
     return (
       <button
         className={
-          `seat ${this.state.className}_seat
+          `seat ${this.state.class.toLowerCase()}-class_seat
           ${this.state.occupied ? 'occupied' : ''}
           ${this.state.premium ? 'premium' : ''}
           ${this.state.overWing ? 'overwing' : ''}`
