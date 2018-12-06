@@ -19,10 +19,10 @@ class Seat extends Component {
     return (
       <button
         className={
-          `seat ${this.state.class.toLowerCase()}-class_seat
-          ${this.state.occupied ? 'occupied' : ''}
-          ${this.state.premium ? 'premium' : ''}
-          ${this.state.overWing ? 'overwing' : ''}`
+          `seat ${this.state.class.toLowerCase()}-class_seat` +
+          `${this.state.occupied ? ' occupied' : ''}` +
+          `${this.state.premium ? ' premium' : ''}` +
+          `${this.state.overWing ? ' overwing' : ''}`
         }>
         {this.state.id}
       </button>

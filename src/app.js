@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Seats from './data/seats'
-import Seat from './Seat';
 import Cabin from './Cabin';
 
 // Represents the seatmap app
@@ -24,7 +23,7 @@ class App extends Component {
   // cabin class components as props
   initCabin(cabinClass) {
     // Store filtered seats (by cabin class) here
-    const seats = this.state.data.filter(seat => seat.class === cabinClass);
+    const seats = this.state.data.filter(seat => seat.class === 'First');
     // Store number of rows for this cabin; last row - first row + 1
     const firstRow = seats[0].row;
     const lastRow = seats[seats.length-1].row
