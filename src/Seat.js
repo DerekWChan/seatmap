@@ -5,13 +5,13 @@ class Seat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.id,
-      class: this.props.class,
-      seat: this.props.seat,
-      row: this.props.row,
-      occupied: this.props.occupied,
-      premium: this.props.premium,
-      overWing: this.props.overWing
+      id: this.props.id, // Unique identifier for seat; row # + letter
+      class: this.props.class, // Cabin class
+      seat: this.props.seat, // Letter assignment
+      row: this.props.row, // Row number
+      occupied: this.props.occupied, // Is it occupied?
+      premium: this.props.premium, // Is it premium?
+      overWing: this.props.overWing // Is it near an overwing exit?
     };
   }
 

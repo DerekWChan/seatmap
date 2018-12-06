@@ -3,6 +3,7 @@ import Seats from './data/seats'
 import Seat from './Seat';
 import Cabin from './Cabin';
 
+// Represents the seatmap app
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,12 +17,12 @@ class App extends Component {
         }
       })
     };
-    this.createCabin = this.createCabin.bind(this);
+    this.initCabin = this.initCabin.bind(this);
   }
 
   // Returns an object with seats, rows, and columns data to be passed onto
   // cabin class components as props
-  createCabin(cabinClass) {
+  initCabin(cabinClass) {
     // Store filtered seats (by cabin class) here
     const seats = this.state.data.filter(seat => seat.class === cabinClass);
     // Store number of rows for this cabin; last row - first row + 1
@@ -46,9 +47,9 @@ class App extends Component {
   render() {
     return (
       <>
-        <Cabin data={this.createCabin('First')}/>
-        <Cabin data={this.createCabin('Business')}/>
-        <Cabin data={this.createCabin('Economy')}/>
+        <Cabin data={this.initCabin('First')}/>
+        <Cabin data={this.initCabin('Business')}/>
+        <Cabin data={this.initCabin('Economy')}/>
       </>
     );
   }

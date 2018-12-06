@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import './styles/Cabin.css';
 import Seat from './Seat';
 
+// Represents each cabin class in the seatmap
 class Cabin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      seats: this.props.data.seats,
-      rows: this.props.data.rows,
-      columns: this.props.data.columns
+      seats: this.props.data.seats, // All seats of this cabin class; JSON array
+      rows: this.props.data.rows, // Number of rows in this cabin; Integer
+      columns: this.props.data.columns // Letters assigned to columns in this cabin; String array
     };
     this.createSeatmap = this.createSeatmap.bind(this);
   }
 
+  // Returns an array of Seat components with props initialized to values
+  // from seats array
   createSeatmap() {
     return this.state.seats.map(seat => {
       return (
