@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './styles/App.css';
 import Seats from './data/seats'
 import Seat from './Seat';
 import FirstClass from './FirstClass';
@@ -19,6 +19,7 @@ class App extends Component {
         }
       })
     };
+    this.createCabin = this.createCabin.bind(this);
   }
 
   createCabin(cabinClass) {
@@ -29,6 +30,7 @@ class App extends Component {
           <Seat
             key={`${seat.row}${seat.seat}`}
             className={`${cabinClass.toLowerCase()}-class`}
+            id={`${seat.row}${seat.seat}`}
             class={seat.class}
             seat={seat.seat}
             row={seat.row}

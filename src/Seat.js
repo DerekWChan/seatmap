@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import './styles/Seat.css';
 
 class Seat extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      className: this.props.className,
+      id: this.props.id,
       class: this.props.class,
       seat: this.props.seat,
       row: this.props.row,
@@ -15,13 +18,8 @@ class Seat extends Component {
 
   render() {
     return (
-      <div className="seat">
-        {this.state.class}
-        {this.state.seat}
-        {this.state.row}
-        {this.state.occupied}
-        {this.state.premium}
-        {this.state.overWing}
+      <div className={`seat ${this.state.className}_seat`}>
+        {this.state.id}
       </div>
     );
   }

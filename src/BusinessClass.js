@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './styles/BusinessClass.css';
 import Seat from './Seat';
 
 class BusinessClass extends Component {
@@ -9,15 +10,25 @@ class BusinessClass extends Component {
       rows: this.props.data.rows,
       columns: this.props.data.columns
     };
+    this.createSeatmap = this.createSeatmap.bind(this);
   }
 
   createSeatmap() {
-
+    return (
+      <div
+        className="cabin business-class_cabin"
+        style={{
+          gridTemplateRows: `repeat(${this.state.rows}, 1fr)`,
+          gridTemplateColumns: `repeat(${this.state.columns.length}, 1fr)`
+        }}>
+        {this.state.seats}
+      </div>
+    );
   }
 
   render() {
     return (
-      <Seat className="business-class" />
+      this.createSeatmap()
     );
   }
 }

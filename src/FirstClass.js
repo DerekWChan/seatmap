@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './styles/Cabin.css';
+import './styles/FirstClass.css';
 import Seat from './Seat';
 
 class FirstClass extends Component {
@@ -9,16 +11,25 @@ class FirstClass extends Component {
       rows: this.props.data.rows,
       columns: this.props.data.columns
     };
+    this.createSeatmap = this.createSeatmap.bind(this);
   }
 
   createSeatmap() {
-    
+    return (
+      <div
+        className="cabin first-class_cabin"
+        style={{
+          gridTemplateRows: `repeat(${this.state.rows}, 1fr)`,
+          gridTemplateColumns: `repeat(${this.state.columns.length}, 1fr)`
+        }}>
+        {this.state.seats}
+      </div>
+    );
   }
 
   render() {
-    console.log(this.state.columns);
     return (
-      this.state.seats
+      this.createSeatmap()
     );
   }
 }
