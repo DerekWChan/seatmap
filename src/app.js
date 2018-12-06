@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Data from './data/seats'
+import Seats from './data/seats'
 import Seat from './Seat';
 import FirstClass from './FirstClass';
 import BusinessClass from './BusinessClass';
@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       // Initialize JSON data sorted by row # then letter assignment
-      data: Data.sort((a, b) => {
+      data: Seats.sort((a, b) => {
         if(a['row'] === b['row']) {
           return a['seat'] === b['seat'] ? 0 : a['seat'] < b['seat'] ? -1 : 1;
         } else {
@@ -19,30 +19,51 @@ class App extends Component {
         }
       })
     };
-    this.createSeatmap = this.createSeatmap.bind(this);
   }
 
-  createSeatmap() {
-    let seatmap = [];
+  createCabin(cabinClass) {
+    let seats = [];
     this.state.data.forEach(seat => {
-      seatmap.push(
-        <Seat
-          key={`${seat.row}${seat.seat}`}
-          class={seat.class}
-          seat={seat.seat}
-          row={seat.row}
-          occupied={seat.occupied}
-          premium={seat.premium}
-          overWing={seat.overWing}
-        />
-      );
+      if(seat.class === cabinClass) {
+        seats.push(
+          <Seat
+            key={`${seat.row}${seat.seat}`}
+            className={`${cabinClass.toLowerCase()}-class`}
+            class={seat.class}
+            seat={seat.seat}
+            row={seat.row}
+            occupied={seat.occupied}
+            premium={seat.premium}
+            overWing={seat.overWing}
+          />
+        );
+      }
     });
-    return seatmap;
+    // Store number of rows for this cabin; last row - first row + 1
+    const firstRow = seats[0].props.row;
+    const lastRow = seats[seats.length-1].props.row
+    const rowsNum = lastRow - firstRow + 1;
+    // Store number of columns for this cabin;
+    const letters = [];
+    for(let seat of seats) {
+      if(seat.props.row === firstRow) {
+        letters.push(seat.props.seat);
+      }
+    }
+    return {
+      seats: seats,
+      rows: rowsNum,
+      columns: letters
+    };
   }
 
   render() {
     return (
-      this.createSeatmap()
+      <>
+        <FirstClass data={this.createCabin('First')}/>
+        <BusinessClass data={this.createCabin('Business')}/>
+        <EconomyClass data={this.createCabin('Economy')}/>
+      </>
     );
   }
 }
