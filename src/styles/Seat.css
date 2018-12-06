@@ -1,0 +1,26 @@
+.seat {
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+}
+
+.seat:hover {
+  background-color: #aaffaa;
+}
+
+.seat:focus {
+  background-color: #aaffaa;
+}
+
+.occupied {
+  filter: brightness(0.75)
+}
+
+.premium {
+  border: 1px dashed black;
+}
+
+.overwing {
+  border: 1px dotted black;
+}

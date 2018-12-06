@@ -18,9 +18,15 @@ class Seat extends Component {
 
   render() {
     return (
-      <div className={`seat ${this.state.className}_seat`}>
+      <button
+        className={
+          `seat ${this.state.className}_seat
+          ${this.state.occupied ? 'occupied' : ''}
+          ${this.state.premium ? 'premium' : ''}
+          ${this.state.overWing ? 'overwing' : ''}`
+        }>
         {this.state.id}
-      </div>
+      </button>
     );
   }
 }

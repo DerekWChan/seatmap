@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/EconomyClass.css';
+import './styles/Cabin.css';
 import Seat from './Seat';
 
 class EconomyClass extends Component {
@@ -18,7 +18,7 @@ class EconomyClass extends Component {
       <div
         className="cabin economy-class_cabin"
         style={{
-          gridTemplateRows: `repeat(${this.state.rows}, 1fr)`,
+          gridTemplateRows: `repeat(${this.state.rows}, 100px)`,
           gridTemplateColumns: `repeat(${this.state.columns.length}, 1fr)`
         }}>
         {this.state.seats}

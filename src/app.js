@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './styles/App.css';
 import Seats from './data/seats'
 import Seat from './Seat';
 import FirstClass from './FirstClass';
