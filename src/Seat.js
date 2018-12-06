@@ -4,18 +4,19 @@ class Seat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      class: '',
-      seat: '',
-      row: 0,
-      occupied: null,
-      premium: null,
-      overWing: null
+      class: this.props.class,
+      seat: this.props.seat,
+      row: this.props.row,
+      occupied: this.props.occupied,
+      premium: this.props.premium,
+      overWing: this.props.overWing
     };
   }
 
   render() {
     return (
-      <div className="seat"></div>
+      <div className="seat">
+      </div>
     );
   }
 }

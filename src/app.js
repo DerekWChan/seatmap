@@ -16,11 +16,30 @@ class App extends Component {
         }
       })
     };
+    this.createSeatmap = this.createSeatmap.bind(this);
+  }
+
+  createSeatmap() {
+    let seatmap = [];
+    this.state.data.slice(0,10).forEach(seat => {
+      seatmap.push(
+        <Seat
+          key={`${seat.row}${seat.seat}`}
+          class={seat.class}
+          seat={seat.seat}
+          row={seat.row}
+          occupied={seat.occupied}
+          premium={seat.premium}
+          overWing={seat.overWing}
+        />
+      );
+    });
+    return seatmap;
   }
 
   render() {
     return (
-      <Seat />
+      this.createSeatmap()
     );
   }
 }
